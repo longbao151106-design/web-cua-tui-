@@ -1,0 +1,12 @@
+@model string
+@{
+    var names = new Dictionary<string, string> {
+        { "oolong", "Trà sữa ô long trân châu" }, { "matcha", "Matcha và sữa tươi" },
+        { "taro", "Trà sữa khoai môn" }, { "brown", "Sữa tươi đường đen" },
+        { "peach", "Trà đào" }, { "jasmine", "Trà sữa trân châu" }
+    };
+    var photo = names.ContainsKey(Model ?? "") ? Model : "oolong";
+}
+<div class="product-photo @photo">
+    <img src="@Url.Content("~/Content/images/" + photo + ".jpg")" alt="@names[photo]" width="1000" height="1200" loading="lazy" decoding="async" />
+</div>

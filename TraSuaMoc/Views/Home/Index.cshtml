@@ -1,0 +1,14 @@
+@model List<TraSuaMoc.Models.Product>
+@{ ViewBag.Title = "Một ly trà sữa, một chút an yên"; }
+<section class="hero">
+    <div class="container hero-grid">
+        <div class="hero-copy"><span class="eyebrow"><img class="tiny-leaf" src="@Url.Content("~/Content/cup-mark.svg")" alt="" width="18" height="22" /> TRÀ SỮA & NHỮNG NIỀM VUI</span><h1>Một ly trà sữa.<br />Một chút <em>an yên.</em></h1><p>Trà sữa thơm béo, trân châu dẻo mềm.<br />Mộc dành cho bạn một khoảng nghỉ thật ngon.</p><div class="hero-cta"><a class="button" href="@Url.Action("Index", "Products")">Chọn món bạn thích <span>↗</span></a><span class="hero-note">Pha mới mỗi ngày<br /><strong>Gửi trọn vị tự nhiên</strong></span></div><div class="hero-small"><span class="leaf-circle"><img src="@Url.Content("~/Content/cup-mark.svg")" alt="" width="15" height="18" /></span><span>Chọn lá trà ngon. Chăm chút từng ly.</span></div></div>
+        <div class="hero-visual"><span class="hero-circle"></span><span class="hero-stamp">LÁ TRÀ CHỌN LỌC<br /><b>100%</b><br />CHÚT THƠM LÀNH</span><div class="hero-cup-back">@Html.Partial("_ProductPhoto", "oolong")</div><div class="hero-cup-front">@Html.Partial("_ProductPhoto", "matcha")</div><div class="hero-caption"><span>01 / MỘC ĐẶC BIỆT</span><strong>Matcha sữa tươi</strong><span>Xanh một chút, vui một chút.</span></div></div>
+    </div>
+</section>
+<div class="values-strip"><div class="container"><span>❧ Trà thơm chọn lọc</span><span>✧ Pha mới mỗi ngày</span><span>♡ Ngọt ngào vừa đủ</span><span>⌁ Chỉn chu từng ly</span></div></div>
+<section class="section container">
+    <div class="section-heading"><div><p class="eyebrow">GỢI Ý TỪ MỘC</p><h2>Những vị thương quen.</h2></div><a class="underlined-link" href="@Url.Action("Index", "Products")">Xem cả thực đơn <span>↗</span></a></div>
+    <div class="product-grid">@foreach (var product in Model) { @Html.Partial("_ProductCard", product) }</div>
+</section>
+<section class="story section" id="cau-chuyen"><div class="container story-grid"><div class="story-illustration"><img class="story-emblem" src="@Url.Content("~/Content/cup-mark.svg")" alt="" width="60" height="72" /><p>TỪ NHỮNG ĐIỀU<br /><em>mộc mạc.</em></p><small>GỬI ĐẾN BẠN, BẰNG MỘT LY TRÀ SỮA.</small></div><div class="story-copy"><p class="eyebrow">CHUYỆN CỦA MỘC</p><h2>Ngon từ nguyên liệu.<br />Ấm từ sự quan tâm.</h2><p>Chúng mình tin một ly trà sữa ngon không cần quá cầu kỳ. Bắt đầu từ những lá trà thơm, một chút sữa lành và sự chăm chút cho từng công đoạn.</p><p>Dù bạn đang vội đến lớp, ngồi làm việc hay hẹn một người bạn, Mộc mong được góp một chút ngọt ngào vào ngày của bạn.</p><a class="underlined-link" href="@Url.Action("Index", "Products")">Tìm vị trà của bạn ↗</a></div></div></section>

@@ -1,0 +1,10 @@
+@model TraSuaMoc.Models.MenuViewModel
+@{ ViewBag.Title = "Thực đơn"; }
+<section class="page-intro"><div class="container"><p class="eyebrow">MỖI NGÀY, MỘT VỊ THƯƠNG</p><h1>Hôm nay bạn uống gì?</h1><p>Một chút đậm đà, một chút thanh mát. Luôn có một ly dành cho bạn.</p></div></section>
+<section class="container menu-section">
+    <div class="menu-toolbar"><nav class="category-tabs" aria-label="Lọc theo danh mục"><a class="@(Model.CategoryId == null ? "selected" : "")" href="@Url.Action("Index", new { search = Model.Search })">Tất cả món</a>@foreach (var category in Model.Categories) { <a class="@(Model.CategoryId == category.Id ? "selected" : "")" href="@Url.Action("Index", new { categoryId = category.Id, search = Model.Search })">@category.Name</a> }</nav>
+        @using (Html.BeginForm("Index", "Products", FormMethod.Get, new { @class = "search-form", role = "search" })) { <input type="hidden" name="categoryId" value="@Model.CategoryId" /><label class="sr-only" for="search">Tìm món</label><input id="search" type="search" name="search" value="@Model.Search" placeholder="Tìm vị trà yêu thích..." maxlength="100" /><button type="submit" aria-label="Tìm kiếm">⌕</button> }
+    </div><p class="result-count">@Model.Products.Count món dành cho bạn <span>· Giá đã bao gồm topping theo mô tả</span></p>
+    @if (Model.Products.Count > 0) { <div class="product-grid">@foreach (var product in Model.Products) { @Html.Partial("_ProductCard", product) }</div> }
+    else { <div class="empty-state"><span class="empty-icon">❧</span><h2>Chưa tìm thấy vị trà này.</h2><p>Bạn thử một tên món khác hoặc xem lại toàn bộ thực đơn nhé.</p><a class="button" href="@Url.Action("Index")">Xem tất cả món ↗</a></div> }
+</section>

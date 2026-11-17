@@ -1,0 +1,147 @@
+/* Shared visual tokens; native Razor markup remains independent of a UI runtime. */
+:root {
+    --spacing-1: .25rem;
+    --spacing-2: .5rem;
+    --spacing-3: .75rem;
+    --spacing-4: 1rem;
+    --spacing-5: 1.25rem;
+    --spacing-6: 1.5rem;
+    --spacing-8: 2rem;
+    --radius-inner: .25rem;
+    --radius-element: .5rem;
+    --radius-container: .75rem;
+    --radius-full: 9999rem;
+    --surface-card: var(--paper);
+    --border-soft: rgba(36, 74, 56, .14);
+    --border-hover: rgba(36, 74, 56, .32);
+    --shadow-low: 0 .0625rem .125rem rgba(36, 74, 56, .04), 0 .25rem .75rem rgba(36, 74, 56, .06);
+    --shadow-hover: 0 .375rem 1.25rem rgba(36, 74, 56, .09);
+    --focus-color: var(--green);
+    --focus-width: .1875rem;
+    --focus-offset: .1875rem;
+    --control-height: 2.75rem;
+    --motion-fast: 160ms;
+    --motion-ease: cubic-bezier(.2, 0, .2, 1);
+}
+
+/* Preserve the original frame, photographs, cream palette and serif headings. */
+.header { box-shadow: 0 .125rem .625rem rgba(36, 74, 56, .025); }
+.nav-links a, .account-link { transition: color var(--motion-fast) var(--motion-ease); }
+.nav-links a:hover, .account-link:hover { color: var(--green); }
+.cart-link { border-radius: var(--radius-element); padding: var(--spacing-2) var(--spacing-1); }
+.cart-count, .price, .line-total, .summary-total, .invoice-total, .invoice-table {
+    font-variant-numeric: tabular-nums;
+}
+.hero-copy h1 { line-height: 1.28; }
+.hero-visual .product-photo { border-radius: var(--radius-element); }
+.hero-caption { line-height: 1.8; }
+.story-illustration { border-radius: var(--radius-inner); }
+.story-copy h2 { line-height: 1.4; }
+
+/* Cards identify individual products; ordinary page sections stay unboxed. */
+.product-card {
+    background: var(--surface-card);
+    border: .0625rem solid var(--border-soft);
+    border-radius: var(--radius-container);
+    overflow: hidden;
+    min-inline-size: 0;
+    transition: border-color var(--motion-fast) var(--motion-ease), box-shadow var(--motion-fast) var(--motion-ease);
+}
+.product-art-link { border-radius: 0; }
+.product-photo img { transition: transform 240ms var(--motion-ease); }
+.product-info { padding: var(--spacing-4) var(--spacing-5) var(--spacing-5); }
+.product-info .eyebrow { color: var(--green); margin-bottom: var(--spacing-1); }
+.product-info h3 { min-block-size: 2.8em; margin-bottom: var(--spacing-2); line-height: 1.4; }
+.product-info h3 a:hover { color: var(--sage); }
+.product-bottom { gap: var(--spacing-3); }
+.price { font-weight: 650; }
+.round-link {
+    inline-size: 2.5rem;
+    block-size: 2.5rem;
+    flex-shrink: 0;
+    background: var(--soft);
+    border-color: var(--border-soft);
+    transition: background var(--motion-fast) var(--motion-ease), color var(--motion-fast) var(--motion-ease);
+}
+.badge { border-radius: var(--radius-full); padding: var(--spacing-1) var(--spacing-3); font-weight: 600; }
+.view-product {
+    color: var(--green);
+    background: var(--paper);
+    border-radius: var(--radius-full);
+    padding: var(--spacing-1) var(--spacing-3);
+}
+
+/* One primary treatment, with quieter secondary navigation and visible states. */
+.button {
+    border-radius: var(--radius-element);
+    min-block-size: var(--control-height);
+    font-weight: 600;
+    box-shadow: var(--shadow-low);
+    transition: background var(--motion-fast) var(--motion-ease), box-shadow var(--motion-fast) var(--motion-ease);
+}
+.button:hover { transform: none; box-shadow: var(--shadow-hover); }
+.button:active { box-shadow: none; }
+.button-outline { box-shadow: none; }
+.button:disabled { box-shadow: none; }
+.underlined-link { text-underline-offset: var(--spacing-1); }
+.category-tabs a { border-radius: var(--radius-full); }
+.category-tabs a:not(.selected):hover { background: var(--soft); border-color: var(--border-soft); }
+.category-tabs a.selected { box-shadow: var(--shadow-low); }
+.search-form { border-radius: var(--radius-element); border-color: var(--border-soft); }
+.search-form:focus-within { border-color: var(--green); }
+.search-form button { min-inline-size: var(--control-height); }
+.search-form input { min-block-size: var(--control-height); }
+.result-count { line-height: 1.8; }
+
+.quantity-control, .quantity-form input, .login-form input:not([type=hidden]) {
+    border-radius: var(--radius-element);
+    border-color: var(--border-soft);
+}
+.quantity-control { overflow: hidden; }
+.quantity-control input:focus-visible { outline-offset: calc(-1 * var(--focus-width)); }
+.quantity-form input { min-block-size: 2.25rem; }
+.login-form input:not([type=hidden]) { min-block-size: var(--control-height); }
+.login-form label { margin-bottom: var(--spacing-2); }
+.order-summary, .invoice-paper { border-radius: var(--radius-container); border-color: var(--border-soft); }
+.invoice-paper { box-shadow: var(--shadow-low); }
+.invoice-table tbody tr:hover { background: var(--cream); }
+.notice, .demo-account { border-radius: var(--radius-element); }
+.detail-art .product-photo { border-radius: var(--radius-container); }
+.footer h3 { line-height: 1.8; }
+.footer a:not(.brand):hover { color: var(--green); text-decoration: underline; text-underline-offset: var(--spacing-1); }
+
+a:focus-visible, button:focus-visible, input:focus-visible {
+    outline: var(--focus-width) solid var(--focus-color);
+    outline-offset: var(--focus-offset);
+}
+.product-art-link:focus-visible { outline-offset: calc(-1 * var(--focus-width)); }
+.product-card:focus-within { border-color: var(--green); }
+
+@media (hover: hover) and (pointer: fine) {
+    .product-card:hover { border-color: var(--border-hover); box-shadow: var(--shadow-hover); }
+    .product-art-link:hover .product-photo img { transform: scale(1.025); }
+}
+
+@media (max-width: 43.75rem) {
+    .product-info { padding: var(--spacing-3); }
+    .product-info h3 { font-size: 1.125rem; line-height: 1.5; min-block-size: 3em; }
+    .product-info .eyebrow { font-size: .625rem; letter-spacing: .06em; }
+    .badge { padding: var(--spacing-1) var(--spacing-2); }
+    .round-link { inline-size: 2.25rem; block-size: 2.25rem; }
+    .category-tabs a { min-block-size: var(--control-height); display: inline-flex; align-items: center; }
+    .search-form input, .login-form input:not([type=hidden]), .quantity-control input, .quantity-form input { font-size: 1rem; }
+    .quantity-form input { min-block-size: var(--control-height); }
+    .quantity-form .text-button, .remove-button { min-block-size: var(--control-height); }
+    .cart-controls { gap: var(--spacing-3); }
+    .footer-grid>div>a:not(.brand) { padding-block: var(--spacing-2); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .product-photo img, .product-card, .button, .round-link, .nav-links a, .account-link { transition: none; }
+    .product-art-link:hover .product-photo img { transform: none; }
+}
+
+@media print {
+    .invoice-paper { box-shadow: none; border-radius: 0; }
+    .invoice-table tbody tr:hover { background: transparent; }
+}

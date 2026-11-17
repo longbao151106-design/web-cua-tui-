@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Mộc — trà thơm, sữa lành. Khám phá trà sữa và những thức uống tươi mát, chọn món và đặt hàng trực tuyến." />
+    <title>@ViewBag.Title · Mộc Trà Sữa</title>
+    <link rel="icon" href="@Url.Content("~/Content/leaf.svg")" type="image/svg+xml" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/site.css?v=3")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/refinements.css?v=4")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/backgrounds.css?v=5")" />
+</head>
+<body>
+    <a class="skip-link" href="#main">Đến nội dung chính</a>
+    <div class="announcement">Một chút trà thơm. Một ngày nhẹ nhàng. <span>— Chào bạn, Mộc đây.</span></div>
+    <header class="header">
+        <div class="container nav">
+            <a href="@Url.Action("Index", "Home")" class="brand" aria-label="Mộc Trà Sữa - Trang chủ"><img class="brand-leaf" src="@Url.Content("~/Content/cup-mark.svg")" alt="" width="32" height="40" /><span>mộc<span class="brand-caption">TRÀ SỮA &amp; NHỮNG ĐIỀU NHỎ</span></span></a>
+            <nav class="nav-links" aria-label="Điều hướng chính">
+                <a class="@(ViewContext.RouteData.Values["controller"].ToString() == "Home" ? "active" : "")" href="@Url.Action("Index", "Home")">Trang chủ</a>
+                <a class="@(ViewContext.RouteData.Values["controller"].ToString() == "Products" ? "active" : "")" href="@Url.Action("Index", "Products")">Thực đơn</a>
+                <a href="@Url.Action("Index", "Home")#cau-chuyen">Chuyện của Mộc</a>
+            </nav>
+            <div class="nav-actions">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <a class="account-link" href="@Url.Action("Index", "Orders")">Đơn của bạn</a>
+                    using (Html.BeginForm("Logout", "Account", FormMethod.Post, new { @class = "inline-form" })) { @Html.AntiForgeryToken()<button class="text-button account-link" type="submit">Đăng xuất</button> }
+                }
+                else { <a class="account-link" href="@Url.Action("Login", "Account")">Đăng nhập</a> }
+                <a class="cart-link" href="@Url.Action("Index", "Cart")" aria-label="Xem giỏ hàng, @ViewBag.CartCount ly"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1 13H6L5 8ZM9 8V6a3 3 0 0 1 6 0v2" /></svg><span class="cart-label">Giỏ hàng</span><span class="cart-count">@ViewBag.CartCount</span></a>
+            </div>
+        </div>
+    </header>
+    <main id="main">
+        @if (TempData["Success"] != null) { <div class="container"><div class="notice success" role="status">✓ @TempData["Success"]</div></div> }
+        @if (TempData["Error"] != null) { <div class="container"><div class="notice error" role="alert">@TempData["Error"]</div></div> }
+        @RenderBody()
+    </main>
+    <footer class="footer" id="lien-he">
+        <div class="container footer-grid">
+            <div><a class="brand footer-brand" href="@Url.Action("Index", "Home")">mộc</a><p>Gói một chút bình yên<br />trong từng ly trà sữa.</p></div>
+            <div><h3>Ghé Mộc một chút</h3><a href="@Url.Action("Index", "Products")">Khám phá thực đơn</a><a href="@Url.Action("Index", "Cart")">Giỏ hàng của bạn</a><a href="@Url.Action("Index", "Orders")">Hóa đơn &amp; đơn hàng</a></div>
+            <div><h3>Được làm bằng sự chỉn chu</h3><p>Trà chọn lọc · Vị ngọt vừa · Pha mới mỗi ngày</p></div>
+        </div>
+        <div class="container footer-bottom"><span>© @DateTime.Now.Year Mộc Trà Sữa</span><span>Chậm lại một chút, thưởng trà sữa một chút.</span></div>
+    </footer>
+    <script src="@Url.Content("~/Scripts/site.js")" defer></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,9 @@
+@model TraSuaMoc.Models.Product
+<article class="product-card" aria-label="@Model.Name">
+    <a class="product-art-link" href="@Url.Action("Details", "Products", new { id = Model.Id })" aria-label="Xem @Model.Name">
+        @Html.Partial("_ProductPhoto", Model.Color)
+        @if (!string.IsNullOrEmpty(Model.Badge)) { <span class="badge">@Model.Badge</span> }
+        <span class="view-product">Khám phá món ↗</span>
+    </a>
+    <div class="product-info"><p class="eyebrow">@Model.Category.Name</p><h3><a href="@Url.Action("Details", "Products", new { id = Model.Id })">@Model.Name</a></h3><div class="product-bottom"><span class="price">@Model.Price.ToString("N0") <small>đ</small></span><a class="round-link" href="@Url.Action("Details", "Products", new { id = Model.Id })" aria-label="Chi tiết @Model.Name" title="Xem chi tiết @Model.Name">↗</a></div></div>
+</article>

@@ -1,0 +1,106 @@
+/* Warm paper, tea-green washes and a low-contrast botanical repeat. */
+:root {
+    --color-background-body: #f1eadc;
+    --color-background-surface: #fffcf3;
+    --color-background-latte: #e9dcc3;
+    --color-background-tea: #dce5ce;
+    --color-background-header: rgba(251, 247, 235, .97);
+    --color-text-secondary: #58634f;
+    --color-text-footer: #4f5e48;
+    --wash-sage: rgba(142, 166, 119, .23);
+    --wash-caramel: rgba(204, 164, 104, .17);
+    --wash-milk: rgba(255, 253, 245, .66);
+    --pattern-tea: url('tea-pattern.svg');
+    --pattern-scale: 22.5rem 20rem;
+    --surface-card: var(--color-background-surface);
+    --muted: var(--color-text-secondary);
+    --sage: var(--color-text-secondary);
+}
+
+body {
+    background-color: var(--color-background-body);
+    background-image:
+        radial-gradient(ellipse at 4% 12%, var(--wash-sage), transparent 48%),
+        radial-gradient(ellipse at 98% 64%, var(--wash-caramel), transparent 46%),
+        var(--pattern-tea);
+    background-size: 100% 65rem, 100% 85rem, var(--pattern-scale);
+    background-repeat: repeat-y, repeat-y, repeat;
+}
+
+.header { background: var(--color-background-header); }
+
+.hero {
+    background-color: var(--color-background-latte);
+    background-image:
+        radial-gradient(ellipse at 78% 46%, var(--color-background-tea), transparent 58%),
+        linear-gradient(110deg, var(--wash-milk), transparent 65%),
+        var(--pattern-tea);
+    background-size: auto, auto, var(--pattern-scale);
+    border-bottom: .0625rem solid var(--border-soft);
+}
+.hero-circle {
+    background: radial-gradient(circle at 34% 28%, #e9edda, #ccd8b9);
+    box-shadow: inset 0 0 0 .0625rem rgba(255, 253, 245, .45);
+}
+.hero-circle:after { border-color: rgba(86, 111, 66, .19); }
+.hero-stamp { background: rgba(251, 249, 235, .55); }
+
+.values-strip {
+    background: rgba(255, 252, 243, .72);
+    border-color: var(--border-soft);
+}
+
+.page-intro {
+    background-color: var(--color-background-tea);
+    background-image:
+        radial-gradient(ellipse at 8% 15%, var(--wash-milk), transparent 62%),
+        linear-gradient(100deg, transparent, rgba(233, 220, 195, .5)),
+        var(--pattern-tea);
+    background-size: auto, auto, var(--pattern-scale);
+    border-bottom: .0625rem solid var(--border-soft);
+}
+
+.story {
+    background-color: #e5e9d7;
+    background-image:
+        radial-gradient(ellipse at 90% 20%, var(--wash-milk), transparent 60%),
+        var(--pattern-tea);
+    background-size: auto, var(--pattern-scale);
+    border-block: .0625rem solid var(--border-soft);
+}
+.story-illustration {
+    background-image: linear-gradient(145deg, rgba(255, 252, 241, .62), rgba(210, 221, 190, .55));
+}
+
+.product-card, .invoice-paper { background: var(--color-background-surface); }
+.product-card { box-shadow: var(--shadow-low); }
+.detail-art .product-photo { box-shadow: var(--shadow-low); }
+.login-story {
+    background-color: var(--color-background-tea);
+    background-image: linear-gradient(150deg, var(--wash-milk), transparent), var(--pattern-tea);
+    background-size: auto, var(--pattern-scale);
+    border: .0625rem solid var(--border-soft);
+}
+.login-form input:not([type=hidden]), .search-form, .quantity-form input {
+    background-color: var(--color-background-surface);
+}
+.order-summary {
+    background-color: #e6e9d7;
+    background-image: linear-gradient(145deg, var(--wash-milk), transparent 75%);
+}
+.demo-account { background-color: #e5e9d6; }
+
+.footer {
+    background-color: #dbe3ce;
+    background-image:
+        linear-gradient(110deg, rgba(244, 239, 220, .55), transparent 60%),
+        var(--pattern-tea);
+    background-size: auto, var(--pattern-scale);
+    border-top: .0625rem solid var(--border-soft);
+}
+.footer-bottom { border-color: rgba(36, 74, 56, .16); }
+.footer p, .footer-grid>div>a:not(.brand), .footer-bottom { color: var(--color-text-footer); }
+
+@media print {
+    body, .invoice-paper { background: white; }
+}

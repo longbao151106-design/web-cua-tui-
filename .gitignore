@@ -1,0 +1,16 @@
+.vs/
+**/bin/
+**/obj/
+packages/
+*.user
+*.suo
+*.log
+*.zip
+.codex/
+.agents/
+.openai/
+OpenAI/
+.env*
+TestResults/
+Web.Local.config
+artifacts/
